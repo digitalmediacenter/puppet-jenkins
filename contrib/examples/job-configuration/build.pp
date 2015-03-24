@@ -12,9 +12,9 @@ class jenkins::job::build(
   }
 
   jenkins::job { 'build':
+    ensure  => $ensure,
     config  => $real_content,
     jobname => $jobname,
     enabled => $enabled,
-    ensure  => $ensure,
   }
 }
