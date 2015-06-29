@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>dmc-hudson</fullName>
+  <properties>
+    <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+      <authorizedKeys>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDimFl438dTfrtEFumLp/Tz65OLQDYXZzfQC7yT4MBvTrgyUus3i7JUI08p5WpkmF4IVA0C343J8V+djJuYBLz5Mg2f2c61JjH6SVtfN4exJHnsw2yo2fJDJyZrruAbguW+o4nKZh7bPLPb+KSfKqOn/2TdWFN+xYbtgo4IKKyKA5WgJAekG3gROeJyy4gS7pZwjEaZtUHD6Vn0zbsXqck0ruVNZExq6YdtALlcidoWNhJr6B6yVGNWdEjco0mSYHjcZjYjVkin2pbVgJrBOfOtUeVonqhVimBV3e1qKnyy6Wk+szQFvw7Uf59UXKzD+ATc3MdQFOA1wGBvGkHR/85p</authorizedKeys>
+    </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+  </properties>
+</user>
+

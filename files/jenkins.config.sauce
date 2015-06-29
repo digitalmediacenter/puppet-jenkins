@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.sauce__ondemand.PluginImpl plugin="sauce-ondemand@1.53">
+  <libraryManager class="com.saucelabs.hudson.HudsonSauceLibraryManager"/>
+  <username></username>
+  <apiKey>lRtiGxkGoEFrWA7Bh6eOxA==</apiKey>
+  <reuseSauceAuth>false</reuseSauceAuth>
+  <sauceConnectDirectory></sauceConnectDirectory>
+  <disableStatusColumn>false</disableStatusColumn>
+</hudson.plugins.sauce__ondemand.PluginImpl>

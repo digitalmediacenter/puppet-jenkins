@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.scm.SubversionSCM_-DescriptorImpl plugin="subversion@1.45">
+  <generation>1</generation>
+  <credentials class="hashtable">
+    <entry>
+      <string>&lt;https://source.dmc.de:443&gt; DMC Source Server Authentication</string>
+      <hudson.scm.SubversionSCM_-DescriptorImpl_-PasswordCredential>
+        <userName>testtest</userName>
+        <password>dHNldHRzZXQ=</password>
+      </hudson.scm.SubversionSCM_-DescriptorImpl_-PasswordCredential>
+    </entry>
+  </credentials>
+  <workspaceFormat>10</workspaceFormat>
+  <validateRemoteUpToVar>false</validateRemoteUpToVar>
+  <storeAuthToDisk>true</storeAuthToDisk>
+</hudson.scm.SubversionSCM_-DescriptorImpl>

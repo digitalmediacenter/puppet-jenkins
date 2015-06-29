@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.jabber.im.transport.JabberPublisherDescriptor plugin="jabber@1.25">
+  <enabled>true</enabled>
+  <port>5222</port>
+  <hostname>jabber.dmc.de</hostname>
+  <hudsonNickname>dmc-hudson</hudsonNickname>
+  <hudsonPassword>NEtBU3BNMktUQ0l0NUM2cEQ=</hudsonPassword>
+  <groupChatNickname>dmc-hudson</groupChatNickname>
+  <exposePresence>true</exposePresence>
+  <enableSASL>false</enableSASL>
+  <scrambledPasswords>true</scrambledPasswords>
+  <commandPrefix>!</commandPrefix>
+  <defaultIdSuffix>dmc.de</defaultIdSuffix>
+  <hudsonCiLogin>dmc-hudson</hudsonCiLogin>
+  <subscriptionMode>manual</subscriptionMode>
+  <emailAddressAsJabberId>false</emailAddressAsJabberId>
+  <proxyType>NONE</proxyType>
+  <proxyPort>3128</proxyPort>
+</hudson.plugins.jabber.im.transport.JabberPublisherDescriptor>

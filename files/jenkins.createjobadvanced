@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.createjobadvanced.CreateJobAdvancedPlugin plugin="createjobadvanced@1.7.2">
+  <autoOwnerRights>true</autoOwnerRights>
+  <autoPublicBrowse>false</autoPublicBrowse>
+  <replaceSpace>true</replaceSpace>
+  <activeLogRotator>true</activeLogRotator>
+  <daysToKeep>-1</daysToKeep>
+  <numToKeep>14</numToKeep>
+  <artifactDaysToKeep>14</artifactDaysToKeep>
+  <artifactNumToKeep>14</artifactNumToKeep>
+  <activeDynamicPermissions>false</activeDynamicPermissions>
+  <mvnArchivingDisabled>false</mvnArchivingDisabled>
+  <mvnPerModuleEmail>false</mvnPerModuleEmail>
+  <dynamicPermissionConfigs/>
+</hudson.plugins.createjobadvanced.CreateJobAdvancedPlugin>

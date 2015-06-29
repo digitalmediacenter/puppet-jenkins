@@ -1,0 +1,90 @@
+### conf fuer <%= @service_name %>
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_METHOD} !^(HEAD|GET|PUT|POST)$ [NC]
+RewriteRule .* - [F,L]
+RewriteCond %{THE_REQUEST} (%0d|%0a) [NC]
+RewriteRule .* - [F,L]
+
+<VirtualHost *:80>
+    ServerAdmin <%= @admin_mailaddress %>
+    DocumentRoot /var/www
+
+    ServerName <%= @service_name %>
+
+    ErrorLog "|/usr/bin/cronolog --link=/var/log/apache2/<%= @service_name %>/error.log /var/log/apache2/<%= @service_name %>/error.log_%Y%m%d"
+    CustomLog "|/usr/bin/cronolog --link=/var/log/apache2/<%= @service_name %>/access.log /var/log/apache2/<%= @service_name %>/access.log_%Y%m%d" combined
+
+    DirectoryIndex index.php index.html
+
+    <Directory "/var/www/<%= @service_name %>/htdocs/">
+        Options FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+   #RedirectPermanent / https://<%= @service_name %>/jenkins
+   RewriteEngine On
+   RewriteCond %{HTTPS} off
+   RewriteCond %{REQUEST_URI} !=/server-status
+   RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@dmc.de
+    DocumentRoot /var/www
+
+    ServerName <%= @service_name %>
+
+    ErrorLog "|/usr/bin/cronolog --link=/var/log/apache2/<%= @service_name %>/ssl_error.log /var/log/apache2/<%= @service_name %>/ssl_error.log_%Y%m%d"
+    CustomLog "|/usr/bin/cronolog --link=/var/log/apache2/<%= @service_name %>/ssl_access.log /var/log/apache2/<%= @service_name %>/ssl_access.log_%Y%m%d" combined
+
+    DirectoryIndex index.php index.html
+    <Directory "/var/www/<%= @service_name %>/htdocs/">
+        Options FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+    <Location />
+        Order allow,deny
+        Allow from all
+        # Wartung
+#        Order deny,allow
+#        Deny from all
+#        Allow from 127.0.0.1
+    </Location>
+
+
+    ProxyRequests Off
+    <Proxy http://localhost:8080/*>
+      Order deny,allow
+      Allow from all
+    </Proxy>
+    ProxyPreserveHost on
+    ProxyPass        /error !
+    ProxyPass        /sonar http://localhost:9000/sonar
+    ProxyPassReverse /sonar http://localhost:9000/sonar
+    ProxyPass        / http://localhost:8080/
+    ProxyPassReverse / http://localhost:8080/
+
+    SetOutputFilter INFLATE;proxy-html;DEFLATE
+    ProxyHTMLURLMap http://<%= @service_name %>:8080/ /
+
+    Header edit Location ^http://<%= @service_name %>/ https://<%= @service_name %>/
+
+    SSLEngine on
+    #SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+    SSLCipherSuite HIGH:-SSLv2
+
+    Alias /error/ "/var/www/global/htdocs/errors/"
+    ErrorDocument 503 /error/HTTP_SERVICE_UNAVAILABLE.html
+
+    SSLCertificateFile /etc/dmc-certs/wildcard.dmc.de.crt
+    SSLCertificateKeyFile /etc/dmc-certs/wildcard.dmc.de.key
+
+</VirtualHost>

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+BACKUPDIR="$1"
+
+if [ -z "$1" ];then
+   echo "$0 <dir>"
+   exit 1
+fi
+
+export PATH="$PATH:/usr/local/bin/"
+mkdir -p ${BACKUPDIR} || exit 1
+cd ${BACKUPDIR}
+
+if [ -d ".git" ];then
+   echo "BACKUPDIR ${BACKUPDIR} already exists"
+else
+   git init
+fi
+
+JOBS="$(jenkins-cli list-jobs)"
+
+for JOB in $JOBS;
+do
+   echo storing ${BACKUPDIR}/${JOB}.xml
+   jenkins-cli get-job $JOB > ${JOB}.xml
+   git add ${JOB}.xml
+   echo "jobs can be restored by : jenkins-cli create-job $JOB < ${BACKUPDIR}/${JOB}.xml"
+done
+
+git commit -m "Backup"  -a 
+git gc
+
